@@ -1,0 +1,7 @@
+if [[ $HAVE_INITIALIZED == false ]]; then 
+    useradd -m $PRIVATE_USERNAME -d /srv/ftp
+    gpasswd -a $PRIVATE_USERNAME ftp
+    gpasswd -a ftp ftp
+    echo "ftp:$PUBLIC_PASSWD" | chpasswd
+    echo "$PRIVATE_USERNAME:$PRIVATE_PASSWD" | chpasswd
+fi

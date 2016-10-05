@@ -1,0 +1,8 @@
+LANG             = C.UTF-8
+LANGUAGE         = C.UTF-8
+LC_ALL           = C.UTF-8
+PUBLIC_PASSWD    = ftp
+PRIVATE_USERNAME = lug
+PRIVATE_PASSWD   = password
+PASV_ADDRESS     = 127.0.0.1
+ENABLE_UNSET_ENV_VARIBLES = false
