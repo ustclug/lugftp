@@ -3,17 +3,19 @@ server {
     server_name _;
     charset     utf-8;
     root        /srv/ftp;
-    location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-
-    }
     index  index.html  index.php  /_h5ai/public/index.php;
     location    /ebook {
         autoindex   off;
         return 403;
+    }
+    location /_h5ai/ {
+        root /usr/share/h5ai/;
+        location /_h5ai/public/index.php {
+            try_files $uri =404;
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
     }
 }

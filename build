@@ -1,5 +1,15 @@
+#!/usr/bin/env bash
+
 apt-get update 
-apt-get install -y --no-install-recommends vsftpd supervisor nginx php5-fpm
+apt-get install -y --no-install-recommends vsftpd supervisor nginx php5-fpm unzip
+apt-get install -y wget
+
+wget https://release.larsjung.de/h5ai/h5ai-0.29.0.zip
+unzip h5ai-0.29.0.zip -d /usr/share/h5ai
+rm h5ai-0.29.0.zip
+
+apt-get autoremove wget
 apt-get clean
 mkdir /var/run/vsftpd/empty -p
 cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
