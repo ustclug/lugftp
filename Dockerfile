@@ -1,4 +1,4 @@
-FROM smartentry/debian:8-0.3.8
+FROM smartentry/debian:8-0.3.2
 
 MAINTAINER Yifan Gao <docker@yfgao.com>
 
@@ -10,4 +10,4 @@ EXPOSE 20-21 80 40000-40050
 
 ENTRYPOINT ["/sbin/smartentry.sh"]
 
-CMD ["/usr/bin/supervisord"]
+CMD ["exec", "/usr/bin/supervisord"]
