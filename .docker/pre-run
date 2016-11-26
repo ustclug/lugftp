@@ -5,3 +5,7 @@ if [[ $HAVE_INITIALIZED == false ]]; then
     echo "ftp:$PUBLIC_PASSWD" | chpasswd
     echo "$PRIVATE_USERNAME:$PRIVATE_PASSWD" | chpasswd
 fi
+
+mkdir -p /var/log/supervisor
+mkdir -p /var/log/nginx
+

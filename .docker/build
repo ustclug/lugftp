@@ -1,5 +1,9 @@
+#!/bin/bash
+
+set -e
 apt-get update 
-apt-get install -y --no-install-recommends vsftpd supervisor nginx php5-fpm
+apt-get install -y --no-install-recommends vsftpd supervisor nginx php5-fpm openssh-server
 apt-get clean
 mkdir /var/run/vsftpd/empty -p
 cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+mkdir -p /var/run/sshd

@@ -1,0 +1,18 @@
+# Secure defaults
+Protocol 2
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+
+# Faster connection
+UseDNS no
+
+# Limited access
+PermitRootLogin no
+X11Forwarding no
+AllowTcpForwarding no
+
+# Force sftp and chroot jail
+Subsystem sftp internal-sftp
+ForceCommand internal-sftp
+ChrootDirectory /srv/ftp
+
