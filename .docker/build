@@ -35,6 +35,7 @@ build_netatalk(){
         --with-tracker-pkgconfig-version=1.0
     make -j `getconf _NPROCESSORS_ONLN`
     make install
+    mkdir -p /var/log/netatalk
     DEBIAN_FRONTEND=noninteractive apt-get purge -y ${BUILD_DEPS}
     apt-get autoremove -y --purge
     apt-get clean
@@ -45,16 +46,25 @@ build_netatalk(){
     rm -rf /usr/share/mime
     rm -rf /usr/share/GeoIP
 
-    mkdir -p /var/log/netatalk
 }
 
 set -e
+set -x
+export DEBIAN_FRONTEND=noninteractive
 
 build_netatalk
 
 apt-get update 
-apt-get install -y --no-install-recommends vsftpd supervisor nginx php5-fpm openssh-server
+apt-get install -y \
+    vsftpd \
+    supervisor \
+    nginx \
+    php5-fpm \
+    openssh-server \
+    nslcd
 apt-get clean
 mkdir /var/run/vsftpd/empty -p
 cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 mkdir -p /var/run/sshd
+
+echo "session required    pam_exec.so /opt/init_home.sh" >> /etc/pam.d/common-session

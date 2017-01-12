@@ -3,6 +3,11 @@ server {
     server_name _;
     charset     utf-8;
     root        /srv/ftp;
+    location ~ ^/~([^/]+)(/.*)?$ {
+        alias /home/$1/public_html$2;
+        index  index.html;
+        autoindex on;
+    }
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_pass unix:/var/run/php5-fpm.sock;

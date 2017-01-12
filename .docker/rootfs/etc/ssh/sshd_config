@@ -10,9 +10,10 @@ UseDNS no
 PermitRootLogin no
 X11Forwarding no
 AllowTcpForwarding no
+UsePAM yes
 
 # Force sftp and chroot jail
 Subsystem sftp internal-sftp
 ForceCommand internal-sftp
-ChrootDirectory /srv/ftp
+ChrootDirectory %h
 
