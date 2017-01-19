@@ -35,7 +35,7 @@ docker run -itd --restart=always \
 | Name             | Implication                              | Default Value |
 | ---------------- | ---------------------------------------- | ------------- |
 | PUBLIC_PASSWD    | Password of public account "ftp" (read only) | ftp           |
-| PRIVATE_USERNAME | Private account name (write access)      | Lug           |
+| PRIVATE_USERNAME | Private account name (write access)      | lug           |
 | PRIVATE_PASSWD   | Password of private account              | password      |
 | PASV_ADDRESS     | FTP PASV Mode Address                    | 127.0.0.1     |
 
