@@ -2,6 +2,7 @@
 Protocol 2
 HostKey /etc/ssh/ssh_host_ed25519_key
 HostKey /etc/ssh/ssh_host_rsa_key
+TrustedUserCAKeys /etc/ssh/ssh_user_ca
 
 # Faster connection
 UseDNS no
