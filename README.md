@@ -10,6 +10,7 @@
 
 * HTTP/HTTPS (read only)
 * FTP
+* FTPS
 * SFTP
 * AFP
 
