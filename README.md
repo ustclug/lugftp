@@ -45,7 +45,7 @@ docker run -itd --restart=always \
 ### AFP
 
 1. Open "Finder"
-2. In menu bar: ”GO” -> “Connect to Server” （Short Cut ⌘+K）
+2. In menu bar: "GO" -> "Connect to Server" （Short Cut ⌘+K）
 3. Server Address：`afp://ftp.ustclug.org/`
 4. Connect
 5. Connect As: Guest（or Registered User with credential） 
