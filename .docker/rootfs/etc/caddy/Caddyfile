@@ -1,0 +1,23 @@
+ftp.ustclug.org {
+	browse
+	tls lug@ustc.edu.cn
+	root /srv/ftp
+	fastcgi / /run/php/php7.0-fpm.sock php
+	rewrite {
+		regexp ^/~([^/]+)(/.*)?$
+			to /home/{1}/public_html{2}
+	}
+	rewrite {
+		if {path} ends_with /
+		to {dir}/index.html {dir}/index.php /_h5ai/public/index.php
+	}
+	proxy /home localhost:81 {
+		transparent
+		without /home/
+	}
+}
+:81 {
+	bind localhost
+	browse
+	root /home
+}
