@@ -6,8 +6,6 @@ PAM_HOME=$(eval echo ~$PAM_USER)
 
 if [[ ! -d $PAM_HOME ]]; then
     mkdir -p $PAM_HOME/public_html
-    mkdir -p $PAM_HOME/private
-    chown $PAM_USER:ldap_users $PAM_HOME/*
-    chmod 555 $PAM_HOME
-    chown root:root $PAM_HOME
+    chown -R $PAM_USER:ldap_users $PAM_HOME
+    chmod 755 $PAM_HOME
 fi
