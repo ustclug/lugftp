@@ -16,5 +16,4 @@ UsePAM yes
 # Force sftp and chroot jail
 Subsystem sftp internal-sftp
 ForceCommand internal-sftp
-ChrootDirectory %h
 
