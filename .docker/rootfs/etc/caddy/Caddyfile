@@ -6,6 +6,7 @@ ftp.ustclug.org {
 		regexp ^/~.+$
 		to /home/{uri}
 	}
+	index ''
 	rewrite {
 		if {path} ends_with /
 		to {dir}/index.html {dir}/index.php /_h5ai/public/index.php
