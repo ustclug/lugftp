@@ -84,7 +84,6 @@ apt-get install -y \
     curl \
     vsftpd \
     supervisor \
-    nginx \
     php-fpm \
     openssh-server \
     nslcd
