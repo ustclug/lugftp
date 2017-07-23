@@ -1,8 +1,11 @@
 server {
     listen      80;
-    server_name _;
+    listen      443 ssl http2;
+    server_name ftp.ustclug.org;
     charset     utf-8;
     root        /srv/ftp;
+    ssl_certificate     /srv/ssl/server.crt;
+    ssl_certificate_key /srv/ssl/server.key;
     location ~ ^/~([^/]+)(/.*)?$ {
         alias /home/$1/public_html$2;
         index  index.html;
