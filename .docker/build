@@ -88,9 +88,12 @@ apt-get install -y \
     openssh-server \
     nslcd
 apt-get clean
-mkdir /var/run/vsftpd/empty -p
 cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 mkdir -p /var/run/sshd \
+    /var/run/vsftpd/empty \
     /run/php
+
+apt-get clean
+rm -rf /var/lib/apt/lists/*
 
 echo "session required    pam_exec.so /opt/init_home.sh" >> /etc/pam.d/common-session
