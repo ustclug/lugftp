@@ -85,6 +85,7 @@ apt-get install -y \
     supervisor \
     nginx \
     php-fpm \
+    php-gd \
     openssh-server \
     nslcd
 apt-get clean
