@@ -4,9 +4,12 @@ LC_ALL           = C.UTF-8
 PUBLIC_PASSWD    = ftp
 PRIVATE_USERNAME = lug
 PRIVATE_PASSWD   = password
+SERVER_NAME      = ftp.lug.ustc.edu.cn
 PASV_ADDRESS     = 127.0.0.1
 NETATALK_VERSION = 3.1.11
 VSFTPD_SSL       = YES
 VSFTPD_ANON_SSL  = YES
 ENABLE_UNSET_ENV_VARIBLES = false
 ENABLE_KEEP_USER_MODIFICATION = false
+LDAP_URI         = "ldaps://ldap.lug.ustc.edu.cn"
+LDAP_BASE        = "dc=lug,dc=ustc,dc=edu,dc=cn"
