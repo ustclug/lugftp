@@ -87,7 +87,9 @@ apt-get install -y \
     php-fpm \
     php-gd \
     openssh-server \
-    nslcd
+    nslcd \
+    graphicsmagick \
+    ffmpeg
 apt-get clean
 cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 mkdir -p /var/run/sshd \
