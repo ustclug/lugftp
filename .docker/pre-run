@@ -9,3 +9,7 @@ fi
 mkdir -p /var/log/supervisor
 mkdir -p /var/log/nginx
 
+if [[ -d /opt/scripts ]]; then
+    run-parts -v --exit-on-error -- /opt/scripts
+fi
+
