@@ -21,8 +21,6 @@ build_netatalk(){
         libdbus-glib-1-dev \
         libglib2.0-dev \
         libio-socket-inet6-perl \
-        libtracker-sparql-1.0-dev \
-        libtracker-miner-1.0-dev \
         file \
         wget \
         ca-certificates"
@@ -30,13 +28,11 @@ build_netatalk(){
     apt-get update
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ${BUILD_DEPS} \
         tracker \
-        libevent-2.0 \
         avahi-daemon \
         libavahi-client3 \
-        libevent-core-2.0 \
         libwrap0 \
         libtdb1 \
-        libmariadbclient18 \
+        libmariadb3 \
         libcrack2 \
         libdbus-glib-1-2 \
         libssl1.1 \
