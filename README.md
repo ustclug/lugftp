@@ -12,7 +12,7 @@
 * FTP
 * FTPS
 * SFTP
-* AFP
+* ~~AFP~~ AFP support has been removed.
 
 ## Deployment
 
@@ -24,7 +24,6 @@ docker run -itd --restart=always \
     -p 40000-40050:40000-40050 \
     -v $LOCAL_DIR/data:/srv/ftp \
     -v $LOCAL_DIR/log:/var/log \
-    -v $LOCAL_DIR/netatalk:/usr/var/netatalk \
     -v $LOCAL_DIR/home:/home \
     -e PRIVATE_PASSWD=secret \
     -e PASV_ADDRESS=$PUBLIC_IP_ADDRESS \
@@ -40,13 +39,3 @@ docker run -itd --restart=always \
 | PRIVATE_PASSWD   | Password of private account              | password      |
 | PASV_ADDRESS     | FTP PASV Mode Address                    | 127.0.0.1     |
 
-## Usage
-
-### AFP
-
-1. Open "Finder"
-2. In menu bar: "GO" -> "Connect to Server" （Short Cut ⌘+K）
-3. Server Address：`afp://ftp.ustclug.org/`
-4. Connect
-5. Connect As: Guest（or Registered User with credential） 
-6. Enjoy
