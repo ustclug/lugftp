@@ -30,7 +30,7 @@ server {
     listen      80  default_server;
     listen      443 default_server ssl http2;
     server_name _;
-    return 301  $scheme://ftp.lug.ustc.edu.cn$request_uri;
+    return 444;
     ssl_certificate     /srv/ssl/server.crt;
     ssl_certificate_key /srv/ssl/server.key;
 }
