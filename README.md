@@ -20,7 +20,6 @@
 docker run -itd --restart=always \
     -p 20-22:20-22 \
     -p 80:80 \
-	-p 548:548 \
     -p 40000-40050:40000-40050 \
     -v $LOCAL_DIR/data:/srv/ftp \
     -v $LOCAL_DIR/log:/var/log \
