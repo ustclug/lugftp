@@ -29,6 +29,8 @@ docker run -itd --restart=always \
     ustclug/ftp
 ```
 
+Security note: Please bind mount `/etc/ssh` (`-v $LOCAL_DIR/ssh:/etc/ssh`) in production, as the container image has its own host SSH keypair public and may gets middle-man attack.
+
 ### Available Environment Variables
 
 | Name             | Implication                              | Default Value |
