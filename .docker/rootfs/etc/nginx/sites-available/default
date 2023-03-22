@@ -11,16 +11,37 @@ server {
         index  index.html;
         autoindex on;
     }
-    location ~ \.php$ {
+    location /_h5ai/public/index.php {
         try_files $uri =404;
         fastcgi_pass unix:/run/php/php7.3-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
-
     }
     index  index.html  index.php  /_h5ai/public/index.php;
     location    /ebook {
+        autoindex   off;
+        return 403;
+    }
+    location    /movie {
+        autoindex   off;
+        return 403;
+    }
+    location    /_h5ai/private {
+        autoindex   off;
+        return 403;
+    }
+    location =  /_h5ai/public {
+        autoindex   off;
+        return 403;
+    }
+    location    /wp-content/ {
+        location /wp-content/gallery {
+            root /srv/ftp;
+        }
+        location /wp-content/uploads {
+            root /srv/ftp;
+        }
         autoindex   off;
         return 403;
     }
