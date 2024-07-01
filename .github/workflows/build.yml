@@ -1,0 +1,21 @@
+name: build
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: "ustclug/ftp:latest"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: |
+          docker pull "$IMAGE"
+          docker build --cache-from "$IMAGE" -t build-image .
+          docker tag build-image "$IMAGE"
+      - name: Push to Docker Hub
+        if: "github.repository == 'ustclug/lugftp'"
+        run: |
+          docker login -u "${{ secrets.DOCKER_USER }}" -p "${{ secrets.DOCKER_PASS }}"
+          docker push "$IMAGE"
