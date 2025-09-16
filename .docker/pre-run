@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ $HAVE_INITIALIZED == false ]]; then 
     useradd -m $PRIVATE_USERNAME -d /srv/ftp
     gpasswd -a $PRIVATE_USERNAME ftp
