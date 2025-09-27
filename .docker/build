@@ -12,7 +12,7 @@ apt-get install -y --no-install-recommends \
     php-fpm \
     php-gd \
     openssh-server \
-    nslcd \
+    nslcd libnss-ldapd libpam-ldapd \
     graphicsmagick \
     ffmpeg
 apt-get clean
