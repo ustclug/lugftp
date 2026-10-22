@@ -19,6 +19,7 @@ RUN apt-get update \
         libnginx-mod-http-fancyindex \
         libnss-ldapd \
         libpam-ldapd \
+        libvips42t64 \
         nginx \
         nslcd \
         openssh-server \
