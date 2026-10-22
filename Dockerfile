@@ -9,6 +9,20 @@ RUN apt-get update \
         "https://github.com/Naereen/Nginx-Fancyindex-Theme/archive/${FANCYINDEX_THEME_COMMIT}.tar.gz" \
       | tar -xz --strip-components=1 -C /theme
 
+FROM debian:trixie AS yatex
+
+ARG YATEX_VERSION=0.0.1
+ARG YATEX_SHA256=d60cecc4fd6ca295f7aff10052a9c03d1dc9cd8d9c0e9d3a364bc344dae5c006
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates curl \
+    && mkdir -p /yatex \
+    && curl --fail --location --silent --show-error \
+        --output /tmp/yatex.tar.gz \
+        "https://github.com/ustclug/yatex/releases/download/v${YATEX_VERSION}/yatex_${YATEX_VERSION}_linux_amd64.tar.gz" \
+    && echo "${YATEX_SHA256}  /tmp/yatex.tar.gz" | sha256sum --check - \
+    && tar -xzf /tmp/yatex.tar.gz -C /yatex
+
 FROM debian:trixie
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -46,9 +60,12 @@ COPY entrypoint.sh /entrypoint.sh
 COPY etc /opt/container/etc
 COPY --from=theme /theme/Nginx-Fancyindex /usr/share/nginx/fancyindex-theme
 COPY --from=theme /theme/LICENSE /usr/share/doc/nginx-fancyindex-theme/copyright
+COPY --from=yatex /yatex/yatex /usr/local/bin/yatex
+COPY --from=yatex /yatex/config.yml /etc/yatex/config.yml
 
 RUN cp -a /opt/container/etc/. /etc/ \
     && cp -L /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && useradd -M -d /srv/ftp lug \
     && mkdir -p \
         /var/run/sshd \
         /var/run/vsftpd/empty \

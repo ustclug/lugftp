@@ -1,0 +1,4 @@
+#!/bin/sh
+exec s6-setuidgid lug /usr/local/bin/yatex \
+    --listen 127.0.0.1:8080 \
+    --config /etc/yatex/config.yml
