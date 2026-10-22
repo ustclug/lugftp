@@ -17,5 +17,5 @@ UsePAM yes
 Subsystem sftp internal-sftp
 ForceCommand internal-sftp
 
-Match User ftp,{{PRIVATE_USERNAME}}
+Match User ftp,${PRIVATE_USERNAME}
     ChrootDirectory %h

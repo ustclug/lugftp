@@ -1,37 +1,34 @@
 server {
     listen      80;
-    listen      443 ssl http2;
-    server_name {{SERVER_NAME}};
+    listen      443 ssl;
+    http2       on;
+    server_name ${SERVER_NAME};
     charset     utf-8;
     root        /srv/ftp;
     ssl_certificate     /srv/ssl/server.crt;
     ssl_certificate_key /srv/ssl/server.key;
+    fancyindex on;
+    fancyindex_localtime on;
+    fancyindex_exact_size off;
+    fancyindex_header "/Nginx-Fancyindex/header.html";
+    fancyindex_footer "/Nginx-Fancyindex/footer.html";
+    fancyindex_name_length 255;
+    fancyindex_ignore "Nginx-Fancyindex";
+    location ^~ /Nginx-Fancyindex/ {
+        alias /usr/share/nginx/fancyindex-theme/;
+        fancyindex off;
+        autoindex off;
+    }
     location ~ ^/~([^/]+)(/.*)?$ {
         alias /home/$1/public_html$2;
         index  index.html;
-        autoindex on;
     }
-    location /_h5ai/public/index.php {
-        try_files $uri =404;
-        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-    index  index.html  index.php  /_h5ai/public/index.php;
+    index  index.html;
     location    /ebook {
         autoindex   off;
         return 403;
     }
     location    /movie {
-        autoindex   off;
-        return 403;
-    }
-    location    /_h5ai/private {
-        autoindex   off;
-        return 403;
-    }
-    location =  /_h5ai/public {
         autoindex   off;
         return 403;
     }
@@ -49,7 +46,8 @@ server {
 
 server {
     listen      80  default_server;
-    listen      443 default_server ssl http2;
+    listen      443 default_server ssl;
+    http2       on;
     return 444;
     ssl_reject_handshake on;
 }
