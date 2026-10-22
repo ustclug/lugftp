@@ -25,6 +25,10 @@ server {
     location @yatex {
         proxy_pass http://127.0.0.1:8080;
     }
+    location ^~ /.yatex/ {
+        internal;
+        try_files $uri =404;
+    }
     location ~ ^/~([^/]+)(/.*)?$ {
         alias /home/$1/public_html$2;
         index  index.html;
