@@ -19,7 +19,7 @@ server {
         fancyindex off;
         autoindex off;
     }
-    location ~* @(?:[0-9]+|[0-9]+x[0-9]+)(?:@[0-9]+)?\.(?:webp|png|jpe?g)$ {
+    location ~* \.(?:webp|png|jpe?g)$ {
         try_files $uri @yatex;
     }
     location @yatex {
