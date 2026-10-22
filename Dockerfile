@@ -11,8 +11,8 @@ RUN apt-get update \
 
 FROM debian:trixie AS yatex
 
-ARG YATEX_VERSION=0.0.1
-ARG YATEX_SHA256=d60cecc4fd6ca295f7aff10052a9c03d1dc9cd8d9c0e9d3a364bc344dae5c006
+ARG YATEX_VERSION=0.0.2
+ARG YATEX_SHA256=1157f9f8e6d7217c61b6bff0dd33260afb5486becdbe7c24cab70ebd23de6653
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl \
